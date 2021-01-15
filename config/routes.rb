@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/signup' => 'users#new'
+  delete '/logout' => 'sessions#destroy'
 
   #dont need post '/signup' bc we already have a route for it in resources :users
   resources :reactions
