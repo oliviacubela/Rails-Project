@@ -1,0 +1,19 @@
+<h1>Add a Reaction for <%= @reaction.dream.name %></h1>
+
+<%= form_for(@reaction) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %><br><br>
+
+<%= f.label :description %>
+<%= f.text_area :description %><br><br>
+
+<%= f.hidden_field :dream_id %>
+<%#=Now we have to make sure that in reactionscontroller new method that we find_by_id(params[:dream_id]) %>
+<%= f.submit %>
+
+
+<% end %>
+
+<%#= option 1 - we post to a nested route, which means that we will remmeber info about the dream when we get to the create action, so we dont have to include it in our form %>
+<%#= option 2 - we include a hidden field - this option is preferred bc it makes your create action cleaner, bc now the create action doesnt depend on nesting. %>
