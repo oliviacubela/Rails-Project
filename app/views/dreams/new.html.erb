@@ -1,0 +1,40 @@
+<h1>Add a New Dream</h1>
+
+<%= form_for(@dream) do |f| %>
+
+
+  <%= f.label :title %>
+  <%= f.text_field :title %><br><br>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+
+
+<p>Select a theme that best describes your dream: </p>
+
+  <%= f.collection_select :theme_id, Theme.all, :id, :name %>
+
+
+<p>Or create a new theme: </p>
+
+
+<%= f.fields_for :theme do |theme_attributes| %>
+<%# Why wouldnt we use 'f.fields_for @theme.build_dream'?
+Because when we create this nested form and the edit functionality, the form will override any previous associations 
+between the dream and theme %>
+  <%= theme_attributes.label :name %>
+  <%= theme_attributes.text_field :name %><br><br>
+
+
+  <%= theme_attributes.label :description %>
+  <%= theme_attributes.text_area :description %><br><br>
+<% end %>
+
+
+
+<%= f.submit "Add Dream" %>
+
+
+<% end %>
+
+
