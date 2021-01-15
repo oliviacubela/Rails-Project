@@ -1,0 +1,18 @@
+<h1>Sign Up</h1>
+
+<%= form_for(@user) do |f| %>
+
+<%= f.label :username %>
+<%= f.text_field :username %>
+
+<%= f.label :email %>
+<%= f.text_field :email %>
+
+<%= f.label :password %>
+<%= f.password_field :password %>
+
+<%= f.submit "Sign Up" %>
+<%# if we put password_digest instead of password, we would be setting the new user's password to a raw string
+it would not be hashed, salted. We'd be overriding the authentication. %>
+
+<% end %>
