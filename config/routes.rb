@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/signup' => 'users#new'
-  delete '/logout' => 'sessions#destroy'
+  get '/logout' => 'sessions#destroy'
+  #delete '/logout' => 'sessions#destroy'
+  #not sure why 'delete' method/request doesnt work, but 'get' does?
 
   #dont need post '/signup' bc we already have a route for it in resources :users
   resources :reactions
