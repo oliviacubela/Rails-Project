@@ -1,0 +1,7 @@
+<h1>All Reactions</h1>
+
+<% @reactions.each do |reaction| %>
+<li><%= reaction.dream.title %> - <%= reaction.name %> - <%= reaction.description %></li>
+
+
+<% end %>

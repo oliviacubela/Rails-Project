@@ -2,6 +2,7 @@
 
 <% @dreams.each do |dream| %>
 <h2><%= dream.title %> | <%= dream.theme.name %></h2><br>
+<%= link_to "Write a Reaction", new_dream_reaction_path(dream.id) %>
 <p><%= dream.content %></p>
 
 <% end %>
