@@ -1,17 +1,12 @@
 class ReactionsController < ApplicationController
   
-  def new
-    @dream = Dream.find_by_id(params[:dream_id])
-    @reaction = @dream.reactions.build
+  def new 
+    if @dream = Dream.find_by_id(params[:dream_id])
+      @reaction = @dream.reactions.build
+    else
+      @reaction = Reaction.new 
+    end
   end
-
-  # def new 
-  #   if @dream = Dream.find_by_id(params[:dream_id])
-  #     @reaction = @dream.reactions.build
-  #   else
-  #     @reaction = Reaction.new 
-  #   end
-  # end
 
   # => adds more flexibility 
 

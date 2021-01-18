@@ -7,7 +7,7 @@ class DreamsController < ApplicationController
   def create
     @dream = Dream.new(dream_params)
     @dream.user_id = session[:user_id]
-    if @dream.save
+    if @dream.save #validation occurs here
       redirect_to dream_path(@dream)
     else
       render :new
