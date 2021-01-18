@@ -1,10 +1,13 @@
-<%# if params[:dream_id] %>  
+<% if params[:dream_id] %>  
 
-<h1>Add a Reaction for <%= @reaction.dream.title %></h1>
+  <h1>Add a Reaction for <%= @reaction.dream.title %></h1>
 
-<%# else %>
-<%# <h2>Add a Reaction</h2> %>
-<%# end %>
+<% else %>
+
+  <h2>Add a Reaction</h2> 
+
+  <% end %>
+<%= render partial: 'layouts/errors', locals: {object: @reaction} %>
 <%# Will add this logic as a helper method -> need to modify hidden_field, and add drop down for Dream selections %>
 <%= form_for(@reaction) do |f| %>
 
