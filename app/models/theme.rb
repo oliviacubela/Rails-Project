@@ -3,4 +3,6 @@ class Theme < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  
+  #validates :name, uniqueness: { scope: :theme, message: "already exists - please select from drop-down" } 
 end
