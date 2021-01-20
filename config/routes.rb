@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   #delete '/logout' => 'sessions#destroy'
   #not sure why 'delete' method/request doesnt work, but 'get' does?
-
-  #dont need post '/signup' bc we already have a route for it in resources :users
+  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  #get '/auth/:provider/callback' => 'sessions#omniauth'
+#if I end up hosting this to heroku, ill need to go to :
+# https://console.cloud.google.com/apis/credentials/oauthclient/322165384303-1k9tckicc9918m1kgqeit1bdg9vln021.apps.googleusercontent.com?project=rails-project-302302&supportedpurview=project
+# and add another authorized uri
   resources :reactions
   resources :dreams do
     resources :reactions, only: [:new, :index]
