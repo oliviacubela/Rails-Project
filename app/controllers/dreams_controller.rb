@@ -10,6 +10,7 @@ class DreamsController < ApplicationController
     if @dream.save #validation occurs here
       redirect_to dream_path(@dream)
     else
+      @dream.build_theme
       render :new
     end
   end
@@ -20,6 +21,7 @@ class DreamsController < ApplicationController
 
   def show 
     @dream = Dream.find_by_id(params[:id])
+    redirect_to dreams_path if !@dream
   end
 
   private 
