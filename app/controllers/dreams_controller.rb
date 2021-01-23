@@ -1,4 +1,7 @@
 class DreamsController < ApplicationController
+  before_action :set_dream, only:[:show, :edit, :update]
+  # before_action :redirect_if_not_logged_in
+
   def new
     @dream = Dream.new
     @dream.build_theme
@@ -20,13 +23,27 @@ class DreamsController < ApplicationController
   end
 
   def show 
-    @dream = Dream.find_by_id(params[:id])
-    redirect_to dreams_path if !@dream
+  end
+
+  def edit 
+  end
+
+  def update 
+    if @dream.update(dream_params)
+      redirect_to dream_path(@dream)
+    else
+      render :edit 
+    end
   end
 
   private 
 
   def dream_params 
     params.require(:dream).permit(:title, :content, :theme_id, theme_attributes: [:name, :description])
+  end
+
+  def set_dream
+    @dream = Dream.find_by_id(params[:id])
+    redirect_to dreams_path if !@dream
   end
 end
