@@ -1,6 +1,6 @@
 class DreamsController < ApplicationController
   before_action :set_dream, only:[:show, :edit, :update]
-  # before_action :redirect_if_not_logged_in
+  before_action :redirect_if_not_logged_in
 
   def new
     @dream = Dream.new

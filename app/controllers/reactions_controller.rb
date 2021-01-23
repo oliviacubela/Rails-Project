@@ -1,4 +1,5 @@
 class ReactionsController < ApplicationController
+  before_action :redirect_if_not_logged_in
   
   def new 
     if @dream = Dream.find_by_id(params[:dream_id])
