@@ -1,6 +1,7 @@
 class DreamsController < ApplicationController
-  before_action :set_dream, only:[:show, :edit, :update]
   before_action :redirect_if_not_logged_in
+  before_action :set_dream, only:[:show, :edit, :update]
+  before_action :redirect_if_not_dream_user, only:[:edit, :update]
 
   def new
     @dream = Dream.new
@@ -45,5 +46,9 @@ class DreamsController < ApplicationController
   def set_dream
     @dream = Dream.find_by_id(params[:id])
     redirect_to dreams_path if !@dream
+  end
+
+  def redirect_if_not_dream_user
+     redirect_to dreams_path if @dream.user != current_user
   end
 end
