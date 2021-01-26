@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   #delete '/logout' => 'sessions#destroy'
   #not sure why 'delete' method/request doesnt work, but 'get' does?
-  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
-  #get '/auth/:provider/callback' => 'sessions#omniauth' => dynamic route that i'll use when adding github omniauth
+  #get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  get '/auth/:provider/callback' => 'sessions#create' 
+  #dynamic route that i'll use when adding github omniauth
 #if I end up hosting this to heroku, ill need to go to :
 # https://console.cloud.google.com/apis/credentials/oauthclient/322165384303-1k9tckicc9918m1kgqeit1bdg9vln021.apps.googleusercontent.com?project=rails-project-302302&supportedpurview=project
 # and add another authorized uri
