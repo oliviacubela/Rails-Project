@@ -1,2 +1,6 @@
-<h2><%= @dream.title %> | <%= @dream.theme.name %></h2><br>
-<p><%= @dream.content %></p>
+<h2><%= @dream.title %></h2>
+<h3><em><%= @dream.theme.name %></em></h3>
+<p><%= @dream.content %></p><br>
+
+by: <%= @dream.user.username %><br>
+<%= link_to "Edit #{@dream.title}", edit_dream_path(@dream) if @dream.user == current_user %>

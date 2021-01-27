@@ -1,8 +1,10 @@
 <h1>All Dreams</h1>
 
 <% @dreams.each do |dream| %>
-<h2><%= dream.title %> | <%= dream.theme.name %></h2><br>
-<%= link_to "Write a Reaction", new_dream_reaction_path(dream.id) %>
+<h2><%= dream.title %></h2>
+<h3><em><%= dream.theme.name %></em></h3>
 <p><%= dream.content %></p>
+by: <%= dream.user.username %>
+<%= link_to "Write a Reaction", new_dream_reaction_path(dream.id) if dream.user != current_user %>
 
 <% end %>
