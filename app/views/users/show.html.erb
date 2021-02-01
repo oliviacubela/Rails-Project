@@ -1,1 +1,13 @@
-<h2>Welcome <%= @user.username %></h2>
+<h1>Welcome <%= @user.username %></h1>
+
+
+<h2>Welcome to <%= @user.username%>'s homepage! </h2>
+
+<h3>Here are the dreams <%=@user.username%> reacted to :</h3>
+<ul>
+  <% @user.dream_reactions.each do |dr|%>
+  <li> <%= link_to dr.title, dream_reactions_path(dr)%> </li>
+  <% end %>
+</ul>
+
+<%# The UI/UX will be dramatically improved -> will create streamlined welcome page  %>
