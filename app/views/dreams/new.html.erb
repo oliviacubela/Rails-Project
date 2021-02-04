@@ -1,6 +1,52 @@
 <h1>Add a New Dream</h1>
 
-<%= render partial: 'form'%>
+<%= render partial: 'layouts/errors', locals: {object: @dream} %>
+
+<%= form_for(@dream) do |f| %>
+
+<div>
+<%= f.label :title %>
+<%= f.text_field :title %><br><br>
+</div>
+<div>
+<%= f.label :content %>
+<%= f.text_area :content %>
+</div>
+
+<%#= if dream.save? %>
+<%#= yield %>
+
+<p>Select a theme that best describes your dream: </p>
+
+<div>
+
+<%= f.collection_select :theme_id, Theme.all, :id, :name, include_blank: 'Select One' %>
+</div>
+
+<p>Or create a new theme: </p>
+
+
+<%= f.fields_for :theme do |theme_fields| %>
+<%# Why wouldnt we use 'f.fields_for @theme.build_dream'?
+Because when we create this nested form and the edit functionality, the form will override any previous associations 
+between the dream and theme %>
+<div>
+  <%= theme_fields.label :name %>
+  <%= theme_fields.text_field :name %><br><br>
+</div>
+<div>
+  <%= theme_fields.label :description %>
+  <%= theme_fields.text_area :description %><br><br>
+</div>
+
+<% end %>
+
+
+<%= f.submit "Add Dream" %>
+
+
+<% end %>
+
 
 
 

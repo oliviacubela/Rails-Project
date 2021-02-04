@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   get '/signup' => 'users#new'
   get '/logout' => 'sessions#destroy'
+
   #delete '/logout' => 'sessions#destroy'
   #not sure why 'delete' method/request doesnt work, but 'get' does?
   #get '/auth/google_oauth2/callback' => 'sessions#omniauth'
@@ -18,6 +19,6 @@ Rails.application.routes.draw do
     resources :reactions, only: [:new, :index]
   end
   resources :themes
-  resources :users
+  resources :users, only: [:show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
