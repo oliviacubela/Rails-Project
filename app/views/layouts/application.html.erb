@@ -9,10 +9,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <div><%= nav_bar %></div>
-
   <body>
-    <%= yield %>
+  <header><%= nav_bar %></header>
+
+  <div id="content"><%= yield %></div>
+
+  <footer>Copyright <%= Time.now.year %></footer>
   </body>
 </html>
