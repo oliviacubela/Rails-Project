@@ -21,6 +21,9 @@ class DreamsController < ApplicationController
 
   def index
     @dreams = Dream.all 
+    if params[:q] && !params[:q].empty?
+      @dreams = @dreams.search(params[:q].downcase)
+    end
   end
 
   def show 

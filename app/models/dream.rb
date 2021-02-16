@@ -9,7 +9,12 @@ class Dream < ApplicationRecord
 
   accepts_nested_attributes_for :theme, reject_if: proc { |attributes| attributes['name'].blank? }
 
-
+  def self.search(params)
+    where("LOWER(title) LIKE ?", "%#{params}%")
+  end
+  #why do we add 'params' in SQL Query?
+  #It prevents someone from injecting code that will delete entire database.. we are specifically asking to see if a title euqalis that name
+  #instead of sneaking in a closing quote that impacts the sql queary that can delete db
 
   # def self.alpha 
   #   order(:title)

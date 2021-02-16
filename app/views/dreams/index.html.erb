@@ -1,10 +1,20 @@
 <h1>All Dreams</h1>
 
+<%= form_tag("/dreams", method: 'get') do %>
+<%= label_tag(:q, "Search for:") %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Search") %>
+<% end %>
+
+<%# if @dreams.empty? %>
+
+<%# <h2>No dreams yet! Post your dream <%= link_to "here", new_dream_path %>
+
 <% @dreams.each do |dream| %>
 <h2><%= link_to dream.title, dream_path(dream.id) %></h2>
 <h3><em><%= dream.theme.name %></em></h3>
-<p><%= dream.content %></p>
+<p><%#= dream.content %></p>
 by: <%= dream.user.username %>
-<%= link_to "Write a Reaction", new_dream_reaction_path(dream.id) if dream.user != current_user %>
+<%#= link_to "Write a Reaction", new_dream_reaction_path(dream.id) if dream.user != current_user %>
 
 <% end %>
