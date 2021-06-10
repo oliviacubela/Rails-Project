@@ -1,6 +1,6 @@
 <h1>All Dreams</h1>
-
-<%= form_tag("/dreams", method: 'get') do %>
+<%# using a form_tag bc we aren't creating/updating/editing an object, we're searching for the title or attribute of many dreams (only querying data/parameters) and then we compare the search terms. We wanna keep a broader search, as opposed to form_for where we would be stuck with exact attributes of object we're searching. We don't wanna limit ourselves to just the attributes %>
+<%= form_tag("/dreams", method: 'get') do %> <%# we use a get request instead of post request bc it sends the parameters into the URL - this is important because when you copy, paste and share URL it saves the search params to go to that exact page %>
 <%= label_tag(:q, "Search for:") %>
 <%= text_field_tag(:q) %>
 <%= submit_tag("Search") %>
